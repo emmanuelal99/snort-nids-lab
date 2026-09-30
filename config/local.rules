@@ -1,0 +1,16 @@
+# /etc/snort/rules/local.rules
+#
+# The four custom rules used in this lab, exactly as tested (Snort 2.9.20).
+# See the README for what each rule caught and how I would tighten them.
+
+# Rule 1 - Detect ICMP traffic
+alert icmp any any -> any any (msg:"ICMP Packet Detected"; sid:1000001; rev:1;)
+
+# Rule 2 - Detect Nmap SYN scan
+alert tcp any any -> any any (msg:"Nmap SYN Scan Detected"; flags:S; threshold:type threshold, track by_src, count 20, seconds 3; sid:1000002; rev:1;)
+
+# Rule 3 - Detect hping3 traffic
+alert tcp any any -> any any (msg:"hping3 Traffic Detected"; flags:S; threshold:type threshold, track by_src, count 15, seconds 2; sid:1000003; rev:1;)
+
+# Rule 4 - Custom SSH rule (TCP to port 22)
+alert tcp any any -> $HOME_NET 22 (msg:"TCP Connection Attempt on SSH Port"; sid:1000004; rev:1;)

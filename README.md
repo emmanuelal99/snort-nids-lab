@@ -442,4 +442,4 @@ Further ideas: send alerts to a file or SIEM instead of the console, run Snort a
 
 ---
 
-*Author: Emmy · MSc Cloud and Network Security, University of Greater Manchester*
+*Author: Emmanuel Aliu · MSc Cloud and Network Security, University of Greater Manchester*
